@@ -9,33 +9,29 @@ import PowerPlugIcon from 'mdi-material-ui/PowerPlug'
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        // necessary for content to be below app bar
-        toolbar: theme.mixins.toolbar,
-    })
+    createStyles({ toolbar: theme.mixins.toolbar })
 )
 
-const DrawerItems = () => {
+const DrawerItems: React.FC = () => {
     const classes = useStyles()
     return (
         <div>
-            <div className={classes.toolbar}>
-                <Divider />
-                <List>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListemItemText>Home</ListemItemText>
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <PowerPlugIcon />
-                        </ListItemIcon>
-                        <ListemItemText>Health Check</ListemItemText>
-                    </ListItem>
-                </List>
-            </div>
+            <div className={classes.toolbar} />
+            <Divider />
+            <List>
+                <ListItem button>
+                    <ListItemIcon>
+                        <HomeIcon />
+                    </ListItemIcon>
+                    <ListemItemText>Home</ListemItemText>
+                </ListItem>
+                <ListItem button>
+                    <ListItemIcon>
+                        <PowerPlugIcon />
+                    </ListItemIcon>
+                    <ListemItemText>Health Check</ListemItemText>
+                </ListItem>
+            </List>
         </div>
     )
 }

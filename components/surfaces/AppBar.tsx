@@ -1,6 +1,6 @@
 import MUIAppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
-import { makeStyles } from '@material-ui/core/styles'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import MenuIcon from 'mdi-material-ui/Menu'
@@ -8,47 +8,55 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { titleCase } from 'title-case'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-    },
-}))
+const stylesWithDrawerWidth = (width: number) =>
+    makeStyles((theme: Theme) =>
+        createStyles({
+            menuButton: {
+                marginRight: theme.spacing(2),
+                [theme.breakpoints.up('md')]: {
+                    display: 'none',
+                },
+            },
+            title: {
+                flexGrow: 1,
+            },
+            appBar: {
+                [theme.breakpoints.up('md')]: {
+                    width: `calc(100% - ${width}px)`,
+                    marginLeft: width,
+                },
+            },
+        })
+    )
 
 interface Props {
     menuOnClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    drawerWidth?: number
 }
 
 export default function AppBar(props: Props) {
-    const classes = useStyles()
+    const classes = stylesWithDrawerWidth(props.drawerWidth || 240)()
     const router = useRouter()
 
     return (
-        <div className={classes.root}>
-            <MUIAppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={(e) => props.menuOnClick?.(e)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        {router.pathname === '/'
-                            ? 'Home'
-                            : canonicalize(router.pathname)}
-                    </Typography>
-                </Toolbar>
-            </MUIAppBar>
-        </div>
+        <MUIAppBar position="fixed" className={classes.appBar}>
+            <Toolbar>
+                <IconButton
+                    edge="start"
+                    className={classes.menuButton}
+                    color="inherit"
+                    aria-label="menu"
+                    onClick={(e) => props.menuOnClick?.(e)}
+                >
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" className={classes.title}>
+                    {router.pathname === '/'
+                        ? 'Home'
+                        : canonicalize(router.pathname)}
+                </Typography>
+            </Toolbar>
+        </MUIAppBar>
     )
 }
 
