@@ -53,6 +53,8 @@ export default function AppBar(props: Props) {
                 <Typography variant="h6" className={classes.title}>
                     {router.pathname === '/'
                         ? 'Home'
+                        : router.pathname === ''
+                        ? 'Home'
                         : canonicalize(router.pathname)}
                 </Typography>
             </Toolbar>

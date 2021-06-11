@@ -29,6 +29,10 @@ const stylesWithDrawerWidth = (drawerWidth: number) =>
             },
         },
         drawerPaper: { width: drawerWidth },
+        content: {
+            flexGrow: 1,
+            padding: theme.spacing(3),
+        },
     }))
 
 interface Props {
@@ -59,12 +63,12 @@ const SurfaceWrapper: React.FC<Props> = ({ children, drawerWidth }) => {
                 <Drawer
                     classes={{ paper: classes.drawerPaper }}
                     variant="permanent"
-                    open={true}
+                    open
                 >
                     <DrawerItems />
                 </Drawer>
             </Hidden>
-            <div>{children}</div>
+            <div className={classes.content}>{children}</div>
         </div>
     )
 }
