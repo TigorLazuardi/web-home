@@ -26,26 +26,33 @@ export default function Home() {
     return (
         <SurfaceWrapper>
             <div className={classes.toolbar} />
-            <Container>
-                <Typography variant="h4">
-                    Welcome to My Humble Abode!
-                </Typography>
-                <Divider className={classes.divider} />
-                <Typography paragraph style={{ marginTop: theme.spacing(2) }}>
-                    This site is a showcase of my personal projects while also
-                    doubles as monitoring / administration tools from remote.
-                    The first section in the sidebar is public, meaning anyone
-                    can access, while the second section is private, requiring
-                    authentications to enter.
-                </Typography>
+            <Container component="main">
+                <section>
+                    <Typography variant="h4">
+                        Welcome to My Humble Abode!
+                    </Typography>
+                    <Divider className={classes.divider} />
+                    <Typography
+                        paragraph
+                        style={{ marginTop: theme.spacing(2) }}
+                    >
+                        This site is a showcase of my personal projects while
+                        also doubles as monitoring / administration tools from
+                        remote. The first section in the sidebar is public,
+                        meaning anyone can access, while the second section is
+                        private, requiring authentications to enter.
+                    </Typography>
+                </section>
 
-                <Typography
-                    variant="h4"
-                    style={{ marginTop: theme.spacing(7) }}
-                >
-                    About Me
-                </Typography>
-                <Divider className={classes.divider} />
+                <section>
+                    <Typography
+                        variant="h4"
+                        style={{ marginTop: theme.spacing(7) }}
+                    >
+                        About Me
+                    </Typography>
+                    <Divider className={classes.divider} />
+                </section>
             </Container>
         </SurfaceWrapper>
     )
