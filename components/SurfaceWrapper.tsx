@@ -42,10 +42,7 @@ const SurfaceWrapper: React.FC<Props> = ({ children, drawerWidth }) => {
         <div className={classes.root}>
             <AppBar
                 drawerWidth={drawerWidth}
-                menuOnClick={() => {
-                    console.log('running')
-                    setMobileOpen(!mobileOpen)
-                }}
+                menuOnClick={() => setMobileOpen(!mobileOpen)}
             />
             <Hidden mdUp implementation="js">
                 <Drawer
