@@ -32,6 +32,9 @@ const stylesWithDrawerWidth = (drawerWidth: number) =>
         content: {
             flexGrow: 1,
             padding: theme.spacing(3),
+            [theme.breakpoints.up('md')]: {
+                paddingLeft: drawerWidth,
+            },
         },
     }))
 
