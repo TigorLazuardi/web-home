@@ -1,13 +1,10 @@
-function getAge() {
-    const b = birthDate().getTime(),
+function getAge(birthDate: string) {
+    const b = new Date(birthDate).getTime(),
         now = Date.now(),
-        timeDifference = Math.abs(b - now)
+        timeDifference = now - b
 
-    return Math.ceil(timeDifference / (1000 * 3600 * 24 * 365))
-}
-
-export function birthDate() {
-    return new Date('1994-06-08')
+    // Yearly =  1000 milliseconds * 3600 seconds * 24 hours * 365 days
+    return Math.floor(timeDifference / (1000 * 3600 * 24 * 365))
 }
 
 export default getAge

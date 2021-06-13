@@ -1,6 +1,10 @@
+import Accordion from '@material-ui/core/Accordion'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Container from '@material-ui/core/Container'
 import Divider from '@material-ui/core/Divider'
 import Grid, { GridProps } from '@material-ui/core/Grid'
+import Hidden from '@material-ui/core/Hidden'
 import Paper from '@material-ui/core/Paper'
 import {
     createStyles,
@@ -10,6 +14,7 @@ import {
 } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import ExpandMore from 'mdi-material-ui/ChevronDown'
 import React from 'react'
 import getAge from '../../actions/age'
 
@@ -29,13 +34,39 @@ const useStyles = makeStyles((theme: Theme) =>
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(1),
         },
+        workLi: {
+            marginTop: theme.spacing(1),
+            [theme.breakpoints.down('sm')]: {
+                paddingLeft: 0,
+                paddingRight: 0,
+                marginLeft: 0,
+                marginRight: 0,
+            },
+        },
+        ul: {
+            [theme.breakpoints.down('sm')]: {
+                paddingLeft: theme.spacing(2),
+                paddingRight: 0,
+                marginLeft: 0,
+                marginRight: 0,
+            },
+        },
+        panelHeading: {
+            fontSize: theme.typography.pxToRem(15),
+            flexBasis: '33.33%',
+            flexShrink: 0,
+        },
+        panelSecondary: {
+            fontSize: theme.typography.pxToRem(15),
+            color: theme.palette.text.secondary,
+        },
     })
 )
-
 interface Props {
     sectionClass?: string
     typographyClass?: string
     dividerClass?: string
+    birthDate: string
 }
 
 function AboutMe(props: Props) {
@@ -48,13 +79,20 @@ function AboutMe(props: Props) {
                 <Container className={classes.flexGrower}>
                     <Grid container spacing={10}>
                         <GridPhotograph item xs={12} sm={4} />
-                        <GridInformation item xs={12} sm={8} />
+                        <GridInformation
+                            item
+                            xs={12}
+                            sm={8}
+                            birthDate={props.birthDate}
+                        />
                     </Grid>
                 </Container>
             </Paper>
         </section>
     )
 }
+
+export default AboutMe
 
 function GridPhotograph(props: GridProps) {
     return (
@@ -80,10 +118,14 @@ function GridPhotograph(props: GridProps) {
     )
 }
 
-const visionText =
-    'To be an aspiring engineer that can bring values and life improvements to me and others around me'
+interface GridPropsWithBirthDate extends GridProps {
+    birthDate: string
+}
 
-function GridInformation(props: GridProps) {
+const visionText =
+    'To be an aspiring engineer that bring values and life improvements to me and others around'
+
+function GridInformation(props: GridPropsWithBirthDate) {
     return (
         <Grid {...props}>
             <Grid container spacing={3}>
@@ -104,58 +146,77 @@ function GridInformation(props: GridProps) {
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    md={4}
+                    lg={4}
                     header="Age"
-                    value={`${getAge()} Years Old`}
+                    value={`${getAge(props.birthDate)} Years Old`}
+                />
+                <GridInfoItems
+                    xs={12}
+                    sm={6}
+                    lg={8}
+                    header="Education"
+                    value={<EducationList />}
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
                     md={4}
                     header="Job"
-                    value="Software Engineer"
+                    value="Backend Software Engineer"
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    md={4}
+                    md={8}
+                    header="Job Desc"
+                    value={<JobDesc />}
+                />
+                <GridInfoItems
+                    xs={12}
+                    header="Work Experience"
+                    value={<WorkList />}
+                />
+                <GridInfoItems
+                    xs={12}
+                    sm={6}
+                    lg={4}
                     header="Preferred Development"
                     value="Backend"
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    md={4}
-                    header="Language Mastery (In Order)"
+                    lg={4}
+                    header="Language Mastery"
                     value={<LanguageMasteryList />}
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    md={4}
+                    lg={4}
                     header="Favorite Language"
                     value="Rust"
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    md={4}
-                    header="Favorite Paradigm"
-                    value="Polymorphism"
-                />
-                <GridInfoItems
-                    xs={12}
-                    sm={6}
-                    md={4}
+                    lg={4}
                     header="Tech Stack"
                     value={<StackList />}
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    md={4}
+                    lg={4}
                     header="Field Mastery Interest"
-                    value={<StackList />}
+                    value={<FieldMasteryInterest />}
+                />
+                <GridInfoItems
+                    xs={12}
+                    sm={6}
+                    lg={4}
+                    header="Hobby"
+                    value="Managing Home Server"
                 />
             </Grid>
         </Grid>
@@ -180,6 +241,131 @@ function FieldMasteryInterest() {
             Security <br />
             System (IoT) <br />
             Machine Learning <br />
+        </Typography>
+    )
+}
+
+function WorkList() {
+    const classes = useStyles()
+    return (
+        <Accordion>
+            <AccordionSummary
+                expandIcon={<ExpandMore />}
+                aria-controls="bareksa"
+                id="panel-bareksa"
+            >
+                <Hidden smDown>
+                    <Typography className={classes.panelHeading}>
+                        PT Bareksa Portal Investasi
+                    </Typography>
+                    <Typography className={classes.panelSecondary}>
+                        2019 - Present
+                    </Typography>
+                </Hidden>
+                <Hidden mdUp>
+                    <Typography style={{ textAlign: 'start' }}>
+                        <b>2019 - Present</b> <br />
+                        PT Bareksa Portal Investasi
+                    </Typography>
+                </Hidden>
+            </AccordionSummary>
+            <AccordionDetails>
+                <ul className={classes.ul}>
+                    <li className={classes.workLi}>
+                        <Typography>
+                            Creating services that are needed for business. Like
+                            HTTP REST API, Consumers and Producers for real time
+                            data synchronization, etc.
+                        </Typography>
+                    </li>
+                    <ul className={classes.ul}>
+                        <li className={classes.workLi}>
+                            <Typography>
+                                Create a service to integrate Bareksa with
+                                Indogold and Pegadaian to offer Gold products in
+                                Bareksa.
+                            </Typography>
+                        </li>
+                        <li className={classes.workLi}>
+                            <Typography>
+                                Create a service to integrate Bareksa with
+                                Kemenkeu so Bareksa can offer SBN products.
+                            </Typography>
+                        </li>
+                        <li className={classes.workLi}>
+                            <Typography>
+                                Create a service to do a database migration
+                                without downtime or fear of database failure.
+                            </Typography>
+                        </li>
+                        <li className={classes.workLi}>
+                            <Typography>
+                                Create a Front End and Back End service
+                                interface so users (developers) can easily
+                                access a security stack and its benefits without
+                                needing a human to supervise.
+                            </Typography>
+                        </li>
+                        <li className={classes.workLi}>
+                            <Typography>
+                                Create libraries to interface new stack so other
+                                users (developers) only needs to write few lines
+                                of code instead of opening documentation of the
+                                stack, giving more time to create business
+                                products.
+                            </Typography>
+                        </li>
+                        <li className={classes.workLi}>
+                            <Typography>
+                                Assists DevOps in deploying tech stacks and
+                                gives advice and warnings about how the stacks
+                                work to ensure reliability in production.
+                            </Typography>
+                        </li>
+                    </ul>
+                    <li className={classes.workLi}>
+                        <Typography>
+                            Explore potential new technology stacks and create
+                            designs and proposals for integrating tech stack to
+                            current stack.
+                        </Typography>
+                    </li>
+                    <li className={classes.workLi}>
+                        <Typography>
+                            Creating libraries for common use and interfacing
+                            across the division.
+                        </Typography>
+                    </li>
+                    <li className={classes.workLi}>
+                        <Typography>
+                            Creating services for internal ease-of-use and
+                            security like REST API wrapper for Redis, token
+                            management for development, etc.
+                        </Typography>
+                    </li>
+                </ul>
+            </AccordionDetails>
+        </Accordion>
+    )
+}
+
+function EducationList() {
+    return (
+        <Typography>
+            <b>2012 - 2018</b> <br />
+            University of Indonesia - Major in Management <br />
+            <br />
+            <b>2019 June - Oct</b> <br />
+            Hacktiv8 Full Javascript Course
+        </Typography>
+    )
+}
+
+function JobDesc() {
+    return (
+        <Typography>
+            Create Backend Microservices using REST API and Miscellaneous
+            Background Jobs to support Bareksa Business
         </Typography>
     )
 }
@@ -215,5 +401,3 @@ function GridInfoItems(props: GridInfoItemsProps) {
         </Grid>
     )
 }
-
-export default AboutMe
