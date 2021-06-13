@@ -66,7 +66,7 @@ interface Props {
     sectionClass?: string
     typographyClass?: string
     dividerClass?: string
-    birthDate: string
+    birthdate: string
 }
 
 function AboutMe(props: Props) {
@@ -83,7 +83,7 @@ function AboutMe(props: Props) {
                             item
                             xs={12}
                             sm={8}
-                            birthDate={props.birthDate}
+                            birthdate={props.birthdate}
                         />
                     </Grid>
                 </Container>
@@ -119,7 +119,7 @@ function GridPhotograph(props: GridProps) {
 }
 
 interface GridPropsWithBirthDate extends GridProps {
-    birthDate: string
+    birthdate: string
 }
 
 const visionText =
@@ -148,7 +148,7 @@ function GridInformation(props: GridPropsWithBirthDate) {
                     sm={6}
                     lg={4}
                     header="Age"
-                    value={`${getAge(props.birthDate)} Years Old`}
+                    value={`${getAge(props.birthdate)} Years Old`}
                 />
                 <GridInfoItems
                     xs={12}

@@ -24,14 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface ServerProps {
-    birthDate: string
+    birthdate: string
 }
 
 export const getStaticProps: PagePropsFunc = async (
     context: Context
 ): Promise<PageProps<ServerProps>> => {
     return {
-        props: { birthDate: process.env.BIRTH_DATE! },
+        props: { birthdate: process.env.BIRTH_DATE! },
     }
 }
 
@@ -49,7 +49,7 @@ export default function Home(props: ServerProps) {
                     sectionClass={classes.header}
                     dividerClass={classes.divider}
                     typographyClass={classes.paragraph}
-                    birthDate={props.birthDate}
+                    birthdate={props.birthdate}
                 />
             </Container>
         </SurfaceWrapper>
