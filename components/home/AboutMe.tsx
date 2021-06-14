@@ -95,6 +95,7 @@ function AboutMe(props: Props) {
 export default AboutMe
 
 function GridPhotograph(props: GridProps) {
+    const theme = useTheme()
     return (
         <Grid
             {...props}
@@ -104,16 +105,18 @@ function GridPhotograph(props: GridProps) {
                 alignItems: 'flex-start',
             }}
         >
-            <img
-                src="https://via.placeholder.com/300x400"
-                alt="placeholder"
-                // follow parent size
-                style={{
-                    width: '100%',
-                    maxWidth: '400px',
-                    objectFit: 'contain',
-                }}
-            />
+            <div style={{ position: 'sticky', top: theme.spacing(12) }}>
+                <img
+                    src="https://via.placeholder.com/300x400"
+                    alt="placeholder"
+                    // follow parent size
+                    style={{
+                        width: '100%',
+                        maxWidth: '400px',
+                        objectFit: 'contain',
+                    }}
+                />
+            </div>
         </Grid>
     )
 }
@@ -146,14 +149,14 @@ function GridInformation(props: GridPropsWithBirthDate) {
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    lg={4}
+                    md={4}
                     header="Age"
                     value={`${getAge(props.birthdate)} Years Old`}
                 />
                 <GridInfoItems
                     xs={12}
                     sm={6}
-                    lg={8}
+                    md={8}
                     header="Education"
                     value={<EducationList />}
                 />
