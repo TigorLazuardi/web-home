@@ -488,31 +488,44 @@ function FreeTime() {
             <section id="hardware" className={classes.sectionGap}>
                 <Typography>
                     Powerful hardware is expensive to rent if it's not making
-                    money. I'll gladly pay Rp 2 Million rupiahs upfront for a
-                    Raspberry Pi server and 1TB of HDD. Rather than monthly cost
-                    of Rp 500k. Of course there's power problem, but Raspberry
-                    PI and a HDD mostly uses 20W and even then, it's only happen
-                    on full CPU / IO load. That's like what? Rp 50k per month? A
-                    far cry from the monthly cost of renting. The money
-                    difference I can use better services from my ISP. Which to
-                    be honest, much more useful for myself and my family than
-                    simply hosting on a cloud. Remember, I don't host my own
-                    things for money.
+                    money. I'll gladly pay Rp 2 Million up front for a{' '}
+                    <b>8GB Raspberry Pi with 128GB MC</b> server and{' '}
+                    <b>1TB of HDD</b>, rather than paying monthly cost of Rp
+                    500k renting a <b>VPS</b>. Of course there's power problem,
+                    but Raspberry PI and a HDD mostly uses 20W and even then,
+                    it's only happen on full CPU / IO load. That's like what? Rp
+                    50k per month? A far cry from the monthly cost of renting.
+                    The money difference I can use better services from my ISP.
+                    Which to be honest, much more useful for myself and my
+                    family than simply hosting on a cloud.
                 </Typography>
             </section>
-            <section id="security">
+            <section id="not-hosting-for-money" className={classes.sectionGap}>
+                <Typography>
+                    Remember, I don't host my own things for money.
+                </Typography>
+            </section>
+            <section id="business" className={classes.sectionGap}>
+                <Typography>
+                    I will gladly switch to cloud when using them for business
+                    of course. Those auto-scaling and automation features are
+                    too good to pass up.
+                </Typography>
+            </section>
+            <section id="security" className={classes.sectionGap}>
                 <Typography>
                     I can learn security by hosting my own. I like to question
                     is this safe from DDoS attacks? How about port / firewall
                     management? Block by IP? VPN and SSH for security? How do I
-                    rate limit? Is there a security loop hole on my hosted apps?
-                    This questions appear only when I started hosting things up
-                    myself.
+                    rate limit? How about hosting my own git Repo? Is there a
+                    security loop hole on my hosted apps? These questions only
+                    appear when I started hosting things up myself.
                 </Typography>
             </section>
             <section id="remote-control">
                 <Typography>
                     Lastly, I can remote control my stuffs at home from remote.
+                    Configuring my router from far away is very cool. Oh btw,
                     Those things on the left sidebar? Yeah, you need special
                     permission to access them. You will definitely get 403
                     Forbidden Error if you are not me.
