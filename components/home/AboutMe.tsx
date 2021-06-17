@@ -424,14 +424,18 @@ function Biography() {
             </section>
             <section id="database" className={classes.sectionGap}>
                 <Typography>
-                    Most often database I used is <b>Postgres </b> because of
-                    it's <b>ACID</b> properties, and with <b>MongoDB </b> for
-                    for miscellanoeous purposes and where too much effort is
-                    needed to create sql table for it. For searching datas, I
-                    used <b>Elastic Search </b> for it's powerful search and
-                    pagination engine. The most often dynamic between them is{' '}
-                    <b>Postgres</b> being the main database while maintaining{' '}
-                    <b>Elastic Search</b> synchronized with <b>Postgres</b>
+                    Most often database I "talked with" is <b>Postgres </b>{' '}
+                    because of it's <b>ACID</b> properties, and with{' '}
+                    <b>MongoDB </b> for for miscellaneous purposes and where too
+                    much effort is needed to create sql table for it (Like
+                    Request / Response Auditing where fields are dynamic). For
+                    searching datas, I used <b>Elastic Search </b> for it's
+                    powerful search and pagination engine. The most often
+                    dynamic between them is <b>Postgres</b> being the main
+                    database while maintaining <b>Elastic Search</b>{' '}
+                    synchronized with <b>Postgres</b>. <b>MongoDB</b> is like
+                    the friend that doesn't talk much but gets along well with
+                    the rest of the group and worked on the background.
                 </Typography>
             </section>
             <section id="side-job" className={classes.sectionGap}>
@@ -451,11 +455,16 @@ function Biography() {
             <section id="tech-integration" className={classes.sectionGap}>
                 <Typography>
                     I also do tech integration and create interface for other
-                    engineers to easily adopt. Be it web GUI using{' '}
-                    <span className={classes.textBold}>React </span>for painless
-                    usage for the tech stack or creating libraries if they need
-                    the tech as dependencies so they don't have to deep dive
-                    reading documentation.
+                    engineers to easily adopt. <b>Vault</b>, while cool as
+                    secret management, requires a dedicated SysAdmin to manage
+                    if we left it by default. It seems like a waste of human
+                    resources just to manage that alone, and humans are not up
+                    24 hours. So a web GUI using{' '}
+                    <span className={classes.textBold}>React </span>is created
+                    (along the backend for another layer of auth and to audit
+                    everything) to ease creating credentials. A client library
+                    for vault is custom made so application can easily use those
+                    credentials and gain the secrets in 3 lines.
                 </Typography>
             </section>
             <section id="on-free-time" className={classes.sectionGap}>
@@ -512,7 +521,7 @@ function FreeTime() {
                 <Typography>
                     Powerful hardware is expensive to rent if it's not making
                     money. I'll gladly pay Rp 2 Million up front for a{' '}
-                    <b>8GB Raspberry Pi with 128GB MC</b> server and{' '}
+                    <b>8GB Raspberry Pi with 128GB MicroSD</b> server and{' '}
                     <b>1TB of HDD</b>, rather than paying monthly cost of Rp
                     500k renting a <b>VPS</b>. Of course there's power problem,
                     but Raspberry PI and a HDD mostly uses 20W and even then,
@@ -562,10 +571,14 @@ function StackList() {
     return (
         <Typography>
             Elastic <br />
+            MongoDB <br />
+            Postgres <br />
             Vault <br />
             Kafka <br />
             Docker <br />
             Docker Compose <br />
+            React <br />
+            NextJS <br />
         </Typography>
     )
 }
