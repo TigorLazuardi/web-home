@@ -60,6 +60,9 @@ const useStyles = makeStyles((theme: Theme) =>
             fontSize: theme.typography.pxToRem(15),
             color: theme.palette.text.secondary,
         },
+        sectionGap: {
+            marginBottom: theme.spacing(2),
+        },
     })
 )
 interface Props {
@@ -221,6 +224,16 @@ function GridInformation(props: GridPropsWithBirthDate) {
                     header="Hobby"
                     value="Managing Home Server"
                 />
+                <GridInfoItems
+                    xs={12}
+                    header="Work Bio"
+                    value={<Biography />}
+                />
+                <GridInfoItems
+                    xs={12}
+                    header="Hobby - Managing Home Server"
+                    value={<FreeTime />}
+                />
             </Grid>
         </Grid>
     )
@@ -370,6 +383,142 @@ function JobDesc() {
             Create Backend Microservices using REST API and Miscellaneous
             Background Jobs to support Bareksa Business
         </Typography>
+    )
+}
+
+function Biography() {
+    const classes = useStyles()
+    return (
+        <article>
+            <section id="main-job" className={classes.sectionGap}>
+                <Typography>
+                    I work at <b>PT Bareksa Portal Investasi</b> as Backend
+                    Software Engineer. What I do is creating web applications in
+                    Go, whether it's a REST api or not. Most often it's a CRUD
+                    design with the deleting part is marking those data as
+                    obselete.
+                </Typography>
+            </section>
+            <section id="database" className={classes.sectionGap}>
+                <Typography>
+                    Most often database I used is <b>Postgres </b> because of
+                    it's <b>ACID</b> properties, and with <b>MongoDB </b> for
+                    for miscellanoeous purposes and where too much effort is
+                    needed to create sql table for it. For searching datas, I
+                    used <b>Elastic Search </b> for it's powerful search and
+                    pagination engine. The most often dynamic between them is{' '}
+                    <b>Postgres</b> being the main database while maintaining{' '}
+                    <b>Elastic Search</b> synchronized with <b>Postgres</b>
+                </Typography>
+            </section>
+            <section id="side-job" className={classes.sectionGap}>
+                <Typography>
+                    if it's not REST api project, project I usually made is{' '}
+                    <span className={classes.textBold}>cron jobs </span>
+                    (written in go) and{' '}
+                    <span className={classes.textBold}>
+                        WebSocket consumer/producer{' '}
+                    </span>{' '}
+                    like Kafka to produce real time data changes between
+                    services. Or some very niche{' '}
+                    <span className={classes.textBold}>observer </span> app to
+                    send time sensitive data around.{' '}
+                </Typography>
+            </section>
+            <section id="tech-integration" className={classes.sectionGap}>
+                <Typography>
+                    I also do tech integration and create interface for other
+                    engineers to easily adopt. Be it web GUI using{' '}
+                    <span className={classes.textBold}>React </span>for painless
+                    usage for the tech stack or creating libraries if they need
+                    the tech as dependencies so they don't have to deep dive
+                    reading documentation.
+                </Typography>
+            </section>
+            <section id="on-free-time" className={classes.sectionGap}>
+                <Typography>
+                    On my free time, I made libraries to standardize{' '}
+                    <span className={classes.textBold}>http </span>services,
+                    making them predictable for front ends and less boilerplate
+                    and repetitive codes for the backend. I also made library to
+                    make the app system more robust to panics and more graceful
+                    in handling them, like properly sending responds, sending
+                    notifications to alerters like Sentry so the engineers are
+                    notified immediately on fatal errors, or simply logging them
+                    and stack tracing for easy review.
+                </Typography>
+            </section>
+            <section id="why-you-should-hire">
+                <Typography>
+                    All of that features and other engineers <i>only have </i>to
+                    write 5 lines of code to use my library and only call once.
+                    Other engineers only need to focus on the business logic
+                    instead of fumbling over boilerplate codes, and everything
+                    comes out ordered and organized. And even then, It's only
+                    touching the surface of what my libraries can do.
+                </Typography>
+            </section>
+        </article>
+    )
+}
+
+function FreeTime() {
+    const classes = useStyles()
+    return (
+        <article>
+            <section id="introduction" className={classes.sectionGap}>
+                <Typography>
+                    I like to host things on my own machine and dealing with the
+                    problems that arise with it by my own. Mostly because I
+                    learn much how programs or technology ticks when dealing
+                    with them (like architecture, network, and dependency
+                    problems). There is a sense of satisfaction knowing how
+                    something works, fails, and its pitfalls. The fact that it
+                    translates well for my future career is a nice side effect.
+                </Typography>
+            </section>
+            <section id="cost" className={classes.sectionGap}>
+                <Typography>
+                    The other thing is because of cost. Hosting things go
+                    expensive very quickly when scaling up. By hosting my own, I
+                    only pay upfront, and long term will be much-much cheaper,
+                    since I can use hardware specialized for my needs.
+                </Typography>
+            </section>
+            <section id="hardware" className={classes.sectionGap}>
+                <Typography>
+                    Powerful hardware is expensive to rent if it's not making
+                    money. I'll gladly pay Rp 2 Million rupiahs upfront for a
+                    Raspberry Pi server and 1TB of HDD. Rather than monthly cost
+                    of Rp 500k. Of course there's power problem, but Raspberry
+                    PI and a HDD mostly uses 20W and even then, it's only happen
+                    on full CPU / IO load. That's like what? Rp 50k per month? A
+                    far cry from the monthly cost of renting. The money
+                    difference I can use better services from my ISP. Which to
+                    be honest, much more useful for myself and my family than
+                    simply hosting on a cloud. Remember, I don't host my own
+                    things for money.
+                </Typography>
+            </section>
+            <section id="security">
+                <Typography>
+                    I can learn security by hosting my own. I like to question
+                    is this safe from DDoS attacks? How about port / firewall
+                    management? Block by IP? VPN and SSH for security? How do I
+                    rate limit? Is there a security loop hole on my hosted apps?
+                    This questions appear only when I started hosting things up
+                    myself.
+                </Typography>
+            </section>
+            <section id="remote-control">
+                <Typography>
+                    Lastly, I can remote control my stuffs at home from remote.
+                    Those things on the left sidebar? Yeah, you need special
+                    permission to access them. You will definitely get 403
+                    Forbidden Error if you are not me.
+                </Typography>
+            </section>
+        </article>
     )
 }
 
