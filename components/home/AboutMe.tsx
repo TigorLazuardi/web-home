@@ -108,9 +108,16 @@ function GridPhotograph(props: GridProps) {
                 alignItems: 'flex-start',
             }}
         >
-            <div style={{ position: 'sticky', top: theme.spacing(12) }}>
+            <Paper
+                elevation={4}
+                style={{
+                    position: 'sticky',
+                    top: theme.spacing(12),
+                    padding: theme.spacing(2),
+                }}
+            >
                 <img
-                    src="https://via.placeholder.com/300x400"
+                    src={process.env.NEXT_PUBLIC_PROFILE_PICTURE!}
                     alt="placeholder"
                     // follow parent size
                     style={{
@@ -119,7 +126,7 @@ function GridPhotograph(props: GridProps) {
                         objectFit: 'contain',
                     }}
                 />
-            </div>
+            </Paper>
         </Grid>
     )
 }
