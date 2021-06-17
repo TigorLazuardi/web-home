@@ -193,7 +193,7 @@ function GridInformation(props: GridPropsWithBirthDate) {
                     xs={12}
                     sm={6}
                     lg={4}
-                    header="Language Mastery"
+                    header={<LanguageMasteryHeader />}
                     value={<LanguageMasteryList />}
                 />
                 <GridInfoItems
@@ -236,6 +236,22 @@ function GridInformation(props: GridPropsWithBirthDate) {
                 />
             </Grid>
         </Grid>
+    )
+}
+
+function LanguageMasteryHeader() {
+    const classes = useStyles()
+    const theme = useTheme()
+    return (
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <Typography
+                className={classes.textBold}
+                style={{ marginRight: theme.spacing(1) }}
+            >
+                Language Matery
+            </Typography>
+            <Typography className={classes.textBold}>(in order)</Typography>
+        </div>
     )
 }
 
@@ -526,9 +542,9 @@ function FreeTime() {
                 <Typography>
                     Lastly, I can remote control my stuffs at home from remote.
                     Configuring my router from far away is very cool. Oh btw,
-                    Those things on the left sidebar? Yeah, you need special
-                    permission to access them. You will definitely get 403
-                    Forbidden Error if you are not me.
+                    Those things on the left sidebar on the second section?
+                    Yeah, you need special permission to access them. You will
+                    definitely get 403 Forbidden Error if you are not me.
                 </Typography>
             </section>
         </article>
@@ -548,7 +564,7 @@ function StackList() {
 }
 
 interface GridInfoItemsProps extends GridProps {
-    header?: string
+    header?: string | React.ReactElement
     value?: string | React.ReactElement
 }
 
@@ -556,13 +572,31 @@ function GridInfoItems(props: GridInfoItemsProps) {
     const classes = useStyles()
     const theme = useTheme()
     const isPhoneSized = useMediaQuery(theme.breakpoints.down('sm'))
-    return (
-        <Grid item {...props}>
+    const header =
+        typeof props.header === 'string' ? (
             <Typography className={classes.textBold}>{props.header}</Typography>
-            <Divider className={classes.divider} />
-            <Typography align={isPhoneSized ? 'justify' : 'left'}>
+        ) : (
+            <div className={classes.textBold}>{props.header}</div>
+        )
+
+    const content =
+        typeof props.value === 'string' ? (
+            <Typography
+                style={{ textAlign: isPhoneSized ? 'justify' : 'left' }}
+            >
                 {props.value}
             </Typography>
+        ) : (
+            <div style={{ textAlign: isPhoneSized ? 'justify' : 'left' }}>
+                {props.value}
+            </div>
+        )
+
+    return (
+        <Grid item {...props}>
+            {header}
+            <Divider className={classes.divider} />
+            {content}
         </Grid>
     )
 }
