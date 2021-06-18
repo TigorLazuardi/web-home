@@ -21,19 +21,19 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const publicItemList = (router: NextRouter): ItemListProp[] => [
     {
-        href: '/web',
+        href: '/',
         text: 'home',
         itemIcon: <HomeIcon />,
         selected: router.pathname === '/',
     },
     {
-        href: '/web/health-check',
+        href: '/health-check',
         text: 'Health Check',
         itemIcon: <PowerPlugIcon />,
         selected: router.pathname === 'health-check',
     },
     {
-        href: '/web/projects',
+        href: '/projects',
         text: 'Projects',
         itemIcon: <BriefcaseIcon />,
         selected: router.pathname.startsWith('/projects'),
@@ -42,25 +42,25 @@ const publicItemList = (router: NextRouter): ItemListProp[] => [
 
 const privateItemList = (router: NextRouter): ItemListProp[] => [
     {
-        href: '/web/docker',
+        href: '/docker',
         text: 'Docker',
         itemIcon: <DockerIcon />,
         selected: router.pathname === '/docker',
     },
     {
-        href: '/web/torrent',
+        href: '/torrent',
         text: 'Torrent',
         itemIcon: <ArchiveArrowDown />,
         selected: router.pathname === '/torrent',
     },
     {
-        href: '/web/pihole',
+        href: '/pihole',
         text: 'PiHole',
         itemIcon: <RaspberryPI />,
         selected: router.pathname === '/pihole',
     },
     {
-        href: '/web/jenkins',
+        href: '/jenkins',
         text: 'Jenkins',
         itemIcon: <HomeAutomation />,
         selected: router.pathname === '/pihole',
