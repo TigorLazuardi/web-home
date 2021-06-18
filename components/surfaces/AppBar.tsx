@@ -59,6 +59,6 @@ export default function AppBar(props: Props) {
 }
 
 function canonicalize(s: string): string {
-    s = s.split('/')[2]?.replaceAll('-', ' ') || 'home'
+    s = s.split('/')[1]?.replaceAll('-', ' ') || 'home'
     return titleCase(s)
 }
