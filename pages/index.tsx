@@ -24,14 +24,14 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface ServerProps {
-    birthdate: string
+    birthdate: string | null
 }
 
 export const getStaticProps: PagePropsFunc = async (
     context: Context
 ): Promise<PageProps<ServerProps>> => {
     return {
-        props: { birthdate: process.env.BIRTH_DATE! },
+        props: { birthdate: process.env.BIRTH_DATE || null },
     }
 }
 

@@ -1,4 +1,7 @@
-function getAge(birthDate: string) {
+function getAge(birthDate: string | null) {
+    if (!birthDate) {
+        return -1
+    }
     const b = new Date(birthDate).getTime(),
         now = Date.now(),
         timeDifference = now - b

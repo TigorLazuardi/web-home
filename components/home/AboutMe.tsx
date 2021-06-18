@@ -69,7 +69,7 @@ interface Props {
     sectionClass?: string
     typographyClass?: string
     dividerClass?: string
-    birthdate: string
+    birthdate: string | null
 }
 
 function AboutMe(props: Props) {
@@ -132,7 +132,7 @@ function GridPhotograph(props: GridProps) {
 }
 
 interface GridPropsWithBirthDate extends GridProps {
-    birthdate: string
+    birthdate: string | null
 }
 
 const visionText =
