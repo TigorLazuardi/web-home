@@ -1,6 +1,8 @@
 import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Container from '@material-ui/core/Container'
 import Divider from '@material-ui/core/Divider'
 import Grid, { GridProps } from '@material-ui/core/Grid'
@@ -15,6 +17,8 @@ import {
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import ExpandMore from 'mdi-material-ui/ChevronDown'
+import GithubIcon from 'mdi-material-ui/Github'
+import GitlabIcon from 'mdi-material-ui/Gitlab'
 import React from 'react'
 import getAge from '../../actions/age'
 
@@ -100,33 +104,80 @@ export default AboutMe
 function GridPhotograph(props: GridProps) {
     const theme = useTheme()
     return (
-        <Grid
-            {...props}
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'flex-start',
-            }}
-        >
-            <Paper
-                elevation={4}
+        <Grid {...props}>
+            <Grid
+                container
+                justify="center"
+                alignItems="center"
+                spacing={3}
                 style={{
                     position: 'sticky',
                     top: theme.spacing(12),
-                    padding: theme.spacing(2),
                 }}
             >
-                <img
-                    src={process.env.NEXT_PUBLIC_PROFILE_PICTURE!}
-                    alt="placeholder"
-                    // follow parent size
-                    style={{
-                        width: '100%',
-                        maxWidth: '400px',
-                        objectFit: 'contain',
-                    }}
-                />
-            </Paper>
+                <Grid item xs={12}>
+                    <Paper elevation={4} style={{ padding: theme.spacing(2) }}>
+                        <img
+                            src={process.env.NEXT_PUBLIC_PROFILE_PICTURE!}
+                            alt="placeholder"
+                            // follow parent size
+                            style={{
+                                width: '100%',
+                                // maxWidth: '400px',
+                                objectFit: 'contain',
+                                borderRadius: '4px',
+                            }}
+                        />
+                    </Paper>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    style={{ display: 'flex', justifyContent: 'center' }}
+                >
+                    <ButtonGroup>
+                        <Button
+                            startIcon={<GithubIcon />}
+                            href="https://github.com/TigorLazuardi"
+                            target="_blank"
+                        >
+                            Github
+                        </Button>
+                        <Button
+                            endIcon={<GitlabIcon />}
+                            href="https://gitlab.com/TigorLazuardi"
+                            target="_blank"
+                        >
+                            Gitlab
+                        </Button>
+                    </ButtonGroup>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography align="center" style={{ fontStyle: 'italic' }}>
+                        Programming Motto
+                    </Typography>
+                    <Typography
+                        align="center"
+                        style={{
+                            fontStyle: 'italic',
+                            marginTop: theme.spacing(2),
+                        }}
+                    >
+                        Lazily initiate once per scope. Share the heap memory in
+                        the same scope. Send messages when going out of scope.
+                    </Typography>
+                    <Typography
+                        align="center"
+                        style={{
+                            fontStyle: 'italic',
+                            marginTop: theme.spacing(2),
+                        }}
+                    >
+                        When creating libraries, receive abstract value but
+                        return concrete value.
+                    </Typography>
+                </Grid>
+            </Grid>
         </Grid>
     )
 }
