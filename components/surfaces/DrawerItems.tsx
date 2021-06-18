@@ -8,7 +8,7 @@ import ArchiveArrowDown from 'mdi-material-ui/ArchiveArrowDown'
 import BriefcaseIcon from 'mdi-material-ui/Briefcase'
 import DockerIcon from 'mdi-material-ui/Docker'
 import HomeIcon from 'mdi-material-ui/Home'
-import MapIcon from 'mdi-material-ui/Map'
+import HomeAutomation from 'mdi-material-ui/HomeAutomation'
 import PowerPlugIcon from 'mdi-material-ui/PowerPlug'
 import RaspberryPI from 'mdi-material-ui/RaspberryPi'
 import Link, { LinkProps } from 'next/link'
@@ -21,48 +21,48 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const publicItemList = (router: NextRouter): ItemListProp[] => [
     {
-        href: '/',
+        href: '/web',
         text: 'home',
         itemIcon: <HomeIcon />,
         selected: router.pathname === '/',
     },
     {
-        href: '/health-check',
+        href: '/web/health-check',
         text: 'Health Check',
         itemIcon: <PowerPlugIcon />,
         selected: router.pathname === 'health-check',
     },
     {
-        href: '/projects',
+        href: '/web/projects',
         text: 'Projects',
         itemIcon: <BriefcaseIcon />,
         selected: router.pathname.startsWith('/projects'),
-    },
-    {
-        href: '/project-status',
-        text: 'Project Status',
-        itemIcon: <MapIcon />,
-        selected: router.pathname.startsWith('/project-status'),
     },
 ]
 
 const privateItemList = (router: NextRouter): ItemListProp[] => [
     {
-        href: '/docker',
+        href: '/web/docker',
         text: 'Docker',
         itemIcon: <DockerIcon />,
         selected: router.pathname === '/docker',
     },
     {
-        href: '/torrent',
+        href: '/web/torrent',
         text: 'Torrent',
         itemIcon: <ArchiveArrowDown />,
         selected: router.pathname === '/torrent',
     },
     {
-        href: '/pihole',
+        href: '/web/pihole',
         text: 'PiHole',
         itemIcon: <RaspberryPI />,
+        selected: router.pathname === '/pihole',
+    },
+    {
+        href: '/web/jenkins',
+        text: 'Jenkins',
+        itemIcon: <HomeAutomation />,
         selected: router.pathname === '/pihole',
     },
 ]

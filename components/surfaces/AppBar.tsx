@@ -51,11 +51,7 @@ export default function AppBar(props: Props) {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    {router.pathname === '/'
-                        ? 'Home'
-                        : router.pathname === ''
-                        ? 'Home'
-                        : canonicalize(router.pathname)}
+                    {canonicalize(router.pathname)}
                 </Typography>
             </Toolbar>
         </MUIAppBar>
@@ -63,6 +59,6 @@ export default function AppBar(props: Props) {
 }
 
 function canonicalize(s: string): string {
-    s = s.split('/')[1].replaceAll('-', ' ')
+    s = s.split('/')[2]?.replaceAll('-', ' ') || 'home'
     return titleCase(s)
 }
