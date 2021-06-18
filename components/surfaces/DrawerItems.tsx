@@ -1,4 +1,5 @@
 import Divider from '@material-ui/core/Divider'
+import MuiLink from '@material-ui/core/Link'
 import List from '@material-ui/core/List'
 import ListItem, { ListItemProps } from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -40,30 +41,30 @@ const publicItemList = (router: NextRouter): ItemListProp[] => [
     },
 ]
 
-const privateItemList = (router: NextRouter): ItemListProp[] => [
+const privateItemList = (router: NextRouter): ExternalItemListProp[] => [
     {
-        href: '/docker',
+        url: 'https://tigor.web.id/docker/',
         text: 'Docker',
         itemIcon: <DockerIcon />,
         selected: router.pathname === '/docker',
     },
     {
-        href: '/torrent',
+        url: 'https://tigor.web.id/torrent/',
         text: 'Torrent',
         itemIcon: <ArchiveArrowDown />,
         selected: router.pathname === '/torrent',
     },
     {
-        href: '/pihole',
+        url: 'https://tigor.web.id/admin/',
         text: 'PiHole',
         itemIcon: <RaspberryPI />,
         selected: router.pathname === '/pihole',
     },
     {
-        href: '/jenkins',
+        url: 'https://tigor.web.id/jenkins/',
         text: 'Jenkins',
         itemIcon: <HomeAutomation />,
-        selected: router.pathname === '/pihole',
+        selected: router.pathname === '/jenkins',
     },
 ]
 
@@ -84,7 +85,7 @@ const DrawerItems: React.FC = () => {
             <Divider />
             <List>
                 {privateItems.map((v) => (
-                    <ItemList key={v.href.toString()} {...v} />
+                    <ExternalItemList key={v.url} {...v} />
                 ))}
             </List>
         </div>
@@ -96,6 +97,12 @@ interface ItemListProp extends ListItemProps, LinkProps {
     text: string
 }
 
+interface ExternalItemListProp extends ListItemProps {
+    url: string
+    text: string
+    itemIcon: React.ReactElement
+}
+
 function ItemList(props: ItemListProp) {
     return (
         <Link href={props.href} passHref>
@@ -104,6 +111,17 @@ function ItemList(props: ItemListProp) {
                 <ListItemText>{props.text}</ListItemText>
             </ListItem>
         </Link>
+    )
+}
+
+function ExternalItemList(props: ExternalItemListProp) {
+    return (
+        <MuiLink href={props.url} target="_blank" color="inherit">
+            <ListItem button component="li" selected={props.selected}>
+                <ListItemIcon>{props.itemIcon}</ListItemIcon>
+                <ListItemText>{props.text}</ListItemText>
+            </ListItem>
+        </MuiLink>
     )
 }
 
