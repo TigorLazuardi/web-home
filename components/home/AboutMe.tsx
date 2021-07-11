@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
         sectionGap: {
             marginBottom: theme.spacing(2),
         },
-    })
+    }),
 )
 interface Props {
     sectionClass?: string
@@ -259,7 +259,7 @@ function GridInformation(props: GridPropsWithBirthDate) {
                     sm={6}
                     lg={4}
                     header="Favorite Language"
-                    value="Rust"
+                    value="Go"
                 />
                 <GridInfoItems
                     xs={12}
@@ -306,7 +306,7 @@ function LanguageMasteryHeader() {
                 className={classes.textBold}
                 style={{ marginRight: theme.spacing(1) }}
             >
-                Language Matery
+                Language Mastery
             </Typography>
             <Typography className={classes.textBold}>(in order)</Typography>
         </div>
@@ -467,10 +467,8 @@ function Biography() {
             <section id="main-job" className={classes.sectionGap}>
                 <Typography>
                     I work at <b>PT Bareksa Portal Investasi</b> as Backend
-                    Software Engineer. What I do is creating web applications in
-                    Go, whether it's a REST api or not. Most often it's a CRUD
-                    design with the deleting part is marking those data as
-                    obselete.
+                    Software Engineer. My main job is creating web applications
+                    in Go, whether it's a REST api or not.{' '}
                 </Typography>
             </section>
             <section id="database" className={classes.sectionGap}>
