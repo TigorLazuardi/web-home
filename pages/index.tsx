@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
         paragraph: {
             marginTop: theme.spacing(2),
         },
-    })
+    }),
 )
 
 interface ServerProps {
@@ -28,7 +28,7 @@ interface ServerProps {
 }
 
 export const getStaticProps: PagePropsFunc = async (
-    context: Context
+    context: Context,
 ): Promise<PageProps<ServerProps>> => {
     return {
         props: { birthdate: process.env.BIRTH_DATE || null },
