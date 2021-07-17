@@ -15,10 +15,9 @@ import RaspberryPI from 'mdi-material-ui/RaspberryPi'
 import Link, { LinkProps } from 'next/link'
 import { NextRouter, useRouter } from 'next/router'
 import React from 'react'
+import grey from '@material-ui/core/colors/grey'
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({ toolbar: theme.mixins.toolbar })
-)
+const useStyles = makeStyles((theme: Theme) => createStyles({ toolbar: theme.mixins.toolbar }))
 
 const publicItemList = (router: NextRouter): ItemListProp[] => [
     {
@@ -81,6 +80,13 @@ const DrawerItems: React.FC = () => {
                 {publicItems.map((v) => (
                     <ItemList key={v.href.toString()} {...v} />
                 ))}
+            </List>
+            <Divider />
+            <List>
+                <ListItem button component="li" selected={false}>
+                    <ListItemIcon></ListItemIcon>
+                    <ListItemText style={{ color: grey[600] }}>Admin Only</ListItemText>
+                </ListItem>
             </List>
             <Divider />
             <List>
