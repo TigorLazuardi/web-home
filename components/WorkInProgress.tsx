@@ -4,87 +4,65 @@ import Grid from '@material-ui/core/Grid'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 
+import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import grey from '@material-ui/core/colors/grey'
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        paperPadding: {
-            paddingTop: theme.spacing(3),
-            paddingBottom: theme.spacing(4),
+        centeringContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
         },
-        flexGrower: {
-            flexGrow: 1,
+        distanceFromTop: {
+            marginTop: theme.spacing(3),
         },
-        textBold: {
-            fontWeight: 'bold',
+        circleContainer: {
+            border: '2px solid black',
+            borderRadius: '50%',
+            height: 'auto',
+            width: '100%',
         },
-        divider: {
-            marginTop: theme.spacing(1),
-            marginBottom: theme.spacing(1),
-        },
-        workLi: {
-            marginTop: theme.spacing(1),
-            [theme.breakpoints.down('sm')]: {
-                paddingLeft: 0,
-                paddingRight: 0,
-                marginLeft: 0,
-                marginRight: 0,
-            },
-        },
-        ul: {
-            [theme.breakpoints.down('sm')]: {
-                paddingLeft: theme.spacing(2),
-                paddingRight: 0,
-                marginLeft: 0,
-                marginRight: 0,
-            },
-        },
-        panelHeading: {
-            fontSize: theme.typography.pxToRem(15),
-            flexBasis: '33.33%',
-            flexShrink: 0,
-        },
-        panelSecondary: {
-            fontSize: theme.typography.pxToRem(15),
-            color: theme.palette.text.secondary,
-        },
-        sectionGap: {
-            marginBottom: theme.spacing(2),
-        },
-    }),
+    })
 )
 
-interface HealthCheck {
-    [key: string]: {
-        message: string
-        status: string
-        code: number
-    }
-}
-
-const testingValues: HealthCheck = {
-    mongodb: {
-        message: 'ok',
-        status: 'healthy',
-        code: 200,
-    },
-    jenkins: {
-        message: 'ok',
-        status: 'healthy',
-        code: 200,
-    },
+function CircularProgressWithLabel(props: CircularProgressProps & { label: string }) {
+    return (
+        <Box position="relative" display="inline-flex" height="44vw" width="44vw">
+            <CircularProgress
+                variant="static"
+                {...props}
+                style={{ height: '44vw', width: '44vw', color: grey[400] }}
+                value={100}
+            />
+            <Box
+                top={0}
+                left={0}
+                bottom={0}
+                right={0}
+                position="absolute"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+            >
+                <Typography variant="h2" component="div" style={{ fontSize: '3.5vw', color: grey[400] }}>
+                    {props.label}
+                </Typography>
+            </Box>
+        </Box>
+    )
 }
 
 export default function WIP() {
+    const classes = useStyles()
     return (
-        <div>
-            <Container>
-                <Grid container>
-                    {Object.keys(testingValues).map((key) => (
-                        <Grid item xs={12} key={key}>
-                            {key} = {JSON.stringify(testingValues[key])}
-                        </Grid>
-                    ))}
+        <Container>
+            <Grid container justify="center" alignContent="center">
+                <Grid item xs={12} className={classes.centeringContainer}>
+                    <CircularProgressWithLabel label="Work In Progress"></CircularProgressWithLabel>
                 </Grid>
-            </Container>
-        </div>
+            </Grid>
+        </Container>
     )
 }

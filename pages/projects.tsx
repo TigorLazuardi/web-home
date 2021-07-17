@@ -1,5 +1,19 @@
 import SurfaceWrapper from '@comp/SurfaceWrapper'
+import WIP from '@comp/WorkInProgress'
+import { createStyles, makeStyles, Theme } from '@material-ui/core'
 
-export default function PiHole() {
-    return <SurfaceWrapper></SurfaceWrapper>
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        toolbar: theme.mixins.toolbar,
+    }),
+)
+
+export default function Projects() {
+    const classes = useStyles()
+    return (
+        <SurfaceWrapper>
+            <div className={classes.toolbar} />
+            <WIP />
+        </SurfaceWrapper>
+    )
 }
