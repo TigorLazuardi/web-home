@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 )
 
-function CircularProgressWithLabel(props: CircularProgressProps & { label: string }) {
+function WorkInProgressCircle(props: CircularProgressProps & { label: string }) {
     return (
         <Box position="relative" display="inline-flex" height="44vw" width="44vw">
             <CircularProgress
@@ -60,7 +60,7 @@ export default function WIP() {
         <Container>
             <Grid container justify="center" alignContent="center">
                 <Grid item xs={12} className={classes.centeringContainer}>
-                    <CircularProgressWithLabel label="Work In Progress"></CircularProgressWithLabel>
+                    <WorkInProgressCircle label="Work In Progress"></WorkInProgressCircle>
                 </Grid>
             </Grid>
         </Container>
