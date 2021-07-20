@@ -1,13 +1,12 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-
 import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress'
+import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import grey from '@material-ui/core/colors/grey'
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         centeringContainer: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
             height: 'auto',
             width: '100%',
         },
-    })
+    }),
 )
 
 function CircularProgressWithLabel(props: CircularProgressProps & { label: string }) {
